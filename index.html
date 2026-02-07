@@ -1,0 +1,965 @@
+﻿﻿﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hari prasad V | Portfolio</title>
+    <style>
+      :root {
+        --bg: #0a0b10;
+        --bg-2: #0f141c;
+        --ink: #e9f0ff;
+        --muted: #a1a9b6;
+        --accent: #55d7ff;
+        --accent-2: #b07cff;
+        --accent-3: #6fffe1;
+        --card: rgba(30, 36, 52, 0.85);
+        --ring: rgba(120, 140, 180, 0.28);
+        --chip: rgba(30, 40, 56, 0.7);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+        cursor: auto;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(900px 600px at 18% 10%, rgba(85, 215, 255, 0.2), transparent 55%),
+          radial-gradient(1000px 700px at 78% 25%, rgba(176, 124, 255, 0.25), transparent 60%),
+          radial-gradient(900px 650px at 60% 85%, rgba(111, 255, 225, 0.16), transparent 60%),
+          linear-gradient(120deg, #07080d 0%, #0b0f16 30%, #0c0f18 60%, #0a0b10 100%);
+        z-index: -2;
+        animation: roam 18s ease-in-out infinite;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 55%);
+        opacity: 0.6;
+        z-index: -1;
+      }
+
+      .grain {
+        position: fixed;
+        inset: -200%;
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 90px 90px, 140px 140px;
+        opacity: 0.35;
+        mix-blend-mode: soft-light;
+        animation: grainMove 16s linear infinite;
+        z-index: -1;
+      }
+
+
+      .orb {
+        position: fixed;
+        border-radius: 999px;
+        filter: blur(8px);
+        opacity: 0.5;
+        z-index: -1;
+        animation: floatOrb 22s ease-in-out infinite;
+      }
+
+      .orb.one {
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(90, 210, 255, 0.35), transparent 65%);
+        top: 8%;
+        left: 12%;
+        animation-delay: -6s;
+      }
+
+      .orb.two {
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(176, 124, 255, 0.35), transparent 65%);
+        top: 20%;
+        right: 8%;
+        animation-delay: -12s;
+      }
+
+      .orb.three {
+        width: 240px;
+        height: 240px;
+        background: radial-gradient(circle, rgba(111, 255, 225, 0.28), transparent 65%);
+        bottom: 6%;
+        left: 45%;
+        animation-delay: -3s;
+      }
+
+      @keyframes grainMove {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(120px, -140px, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes floatOrb {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(40px, -30px, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes roam {
+        0% {
+          background-position: 0% 0%, 100% 0%, 50% 100%, 0% 0%;
+        }
+        50% {
+          background-position: 30% 20%, 70% 10%, 40% 80%, 100% 100%;
+        }
+        100% {
+          background-position: 0% 0%, 100% 0%, 50% 100%, 0% 0%;
+        }
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 22px 120px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 6px;
+      }
+
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .scramble {
+        display: inline-block;
+      }
+
+      .logo span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: linear-gradient(140deg, #3bc6ff, #9b6dff);
+        color: #081019;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      nav a:hover {
+        color: var(--ink);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: var(--chip);
+        border: 1px solid rgba(111, 255, 225, 0.35);
+        color: var(--accent-3);
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-3);
+        box-shadow: 0 0 8px rgba(111, 255, 225, 0.8);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 48px;
+        padding: 54px 0 24px;
+        align-items: start;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 5vw, 66px);
+        line-height: 1.05;
+        margin: 18px 0 16px;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(120deg, #5ad9ff, #c38cff);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        font-size: 17px;
+        color: var(--muted);
+        max-width: 540px;
+        margin: 0 0 26px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.25),
+          inset 0 0 18px rgba(255, 255, 255, 0.06);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      .btn.primary {
+        background: rgba(255, 255, 255, 0.92);
+        color: #0a0f16;
+      }
+
+      .btn.ghost {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+      }
+
+      .hero-card {
+        background: var(--card);
+        border-radius: 22px;
+        padding: 26px;
+        box-shadow: 0 24px 50px rgba(5, 10, 18, 0.4);
+        border: 1px solid var(--ring);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 1px solid rgba(120, 180, 255, 0.5);
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      .profile-wrap {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 999px;
+        object-fit: cover;
+        border: 3px solid rgba(90, 180, 255, 0.9);
+        box-shadow: 0 0 18px rgba(90, 180, 255, 0.4);
+        flex: 0 0 auto;
+      }
+
+      .profile-text {
+        flex: 1;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .profile-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(16, 23, 32, 0.08);
+      }
+
+      .profile-meta div {
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 12px;
+        border: 1px solid rgba(16, 23, 32, 0.08);
+      }
+
+      .profile-meta span {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 16px;
+        background: rgba(36, 44, 64, 0.6);
+        border: 1px solid rgba(120, 140, 180, 0.2);
+        text-align: center;
+      }
+
+      .stat strong {
+        font-size: 22px;
+        color: var(--accent);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer {
+        margin-top: 72px;
+        padding: 24px 0;
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 70px;
+        padding: 28px;
+        border-radius: 22px;
+        background: rgba(16, 20, 30, 0.35);
+        border: 1px solid rgba(180, 200, 255, 0.18);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.4),
+          inset 0 0 40px rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(20px) saturate(140%);
+      }
+
+      .section-title {
+        font-size: 12px;
+        letter-spacing: 4px;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .section h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        margin: 0 0 24px;
+      }
+
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .bento-card {
+        background: rgba(26, 32, 46, 0.82);
+        border: 1px solid rgba(120, 140, 180, 0.25);
+        border-radius: 18px;
+        padding: 22px;
+        min-height: 140px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bento-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 60%);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .bento-card .tag {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .bento-card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+
+      .bento-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .bento-wide {
+        grid-column: span 2;
+      }
+
+      .bento-tall {
+        grid-row: span 2;
+        min-height: 300px;
+      }
+
+      .dot-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .dot-row span {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .dot-row span.active {
+        background: #d66bff;
+      }
+
+      .split-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .panel {
+        background: rgba(26, 32, 46, 0.78);
+        border: 1px solid rgba(120, 140, 180, 0.25);
+        border-radius: 20px;
+        padding: 26px;
+        min-height: 280px;
+      }
+
+      .panel h3 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+
+      .panel p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .project-item {
+        display: flex;
+        gap: 16px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(120, 140, 180, 0.25);
+        background: rgba(30, 38, 52, 0.7);
+        margin-bottom: 12px;
+      }
+
+      .project-item span {
+        color: var(--muted);
+        font-size: 12px;
+        width: 24px;
+      }
+
+      .project-item h4 {
+        margin: 0 0 4px;
+        font-size: 15px;
+      }
+
+      .project-item p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stack-pill {
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(35, 44, 64, 0.7);
+        border: 1px solid rgba(120, 140, 180, 0.25);
+        text-align: center;
+        font-size: 13px;
+        color: var(--ink);
+      }
+
+      .contact-card {
+        margin-top: 64px;
+        background: linear-gradient(120deg, rgba(20, 46, 56, 0.9), rgba(63, 42, 86, 0.95));
+        border: 1px solid rgba(120, 140, 180, 0.3);
+        border-radius: 20px;
+        padding: 40px 22px;
+        text-align: center;
+      }
+
+      .contact-card .eyebrow {
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .contact-card h2 {
+        font-size: clamp(28px, 4vw, 38px);
+        margin: 0 0 10px;
+      }
+
+      .contact-card p {
+        margin: 0 auto 22px;
+        max-width: 520px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .btn.outline {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+      }
+
+      .contact-status {
+        margin-top: 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .contact-status strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: rise 0.8s ease forwards;
+      }
+
+      .fade-in.delay-1 { animation-delay: 0.1s; }
+      .fade-in.delay-2 { animation-delay: 0.2s; }
+      .fade-in.delay-3 { animation-delay: 0.3s; }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 700px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-wrap {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .bento-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .bento-wide,
+        .bento-tall {
+          grid-column: auto;
+          grid-row: auto;
+        }
+
+        .split-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="logo">
+          <span>H</span>
+          <div>
+            <div style="font-size: 12px; color: var(--muted); letter-spacing: 3px;">HARI PRASAD V</div>
+            <div style="font-size: 14px;">Portfolio</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <span style="padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); color: var(--muted); font-size: 12px;">
+            CMD&nbsp;&nbsp;K
+          </span>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="fade-in">
+          <span class="badge">Online</span>
+          <h1>
+            <span class="scramble" data-text="Architecting Cloud Systems & AI-Driven Interfaces.">
+              Architecting <span>Cloud Systems</span> &amp; <span>AI-Driven Interfaces</span>.
+            </span>
+          </h1>
+          <p>
+            I am a 3rd-year CSBS student at MIT Mysore blending motion, clarity,
+            and experimentation. From high-concurrency cloud architectures to
+            generative UI, I build systems that feel alive.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://github.com/hariachar926-a11y">GitHub Profile</a>
+            <a class="btn ghost" href="#projects">View Work</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Mysore, IN</span>
+            <span class="pill">Remote Ready</span>
+            <span class="pill">Open Source</span>
+          </div>
+        </div>
+        <div class="hero-card fade-in delay-2">
+          <div class="profile-wrap">
+            <img class="profile-photo" src="profile.jpg/Screenshot%202026-02-07%20123512.png" alt="Hari prasad V" />
+            <div class="profile-text">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap: wrap;">
+                <div>
+                  <div style="letter-spacing: 3px; font-size: 11px; color: var(--muted);">PROFILE</div>
+                  <div style="font-size: 24px; font-weight: 700;">Hari prasad V</div>
+                </div>
+                <a
+                  href="https://www.instagram.com/hari.achar__"
+                  target="_blank"
+                  rel="noopener"
+                  style="padding: 6px 12px; border-radius: 999px; background: rgba(84, 120, 255, 0.15); color: #9fb6ff; font-size: 12px; text-decoration: none;"
+                >
+                  @hari.achar__
+                </a>
+              </div>
+              <p style="margin-top: 12px; color: var(--muted);">
+            Passionate about Cloud Computing and Generative AI. Currently exploring LLMs
+            and distributed systems architecture.
+              </p>
+              <p style="color: var(--muted); margin-bottom: 6px;">
+            Specialties: Java, Spring Boot, AWS.
+              </p>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>3rd</strong>
+              <div>MIT</div>
+            </div>
+            <div class="stat">
+              <strong>Internship</strong>
+              <div>Winsun Global Tech</div>
+            </div>
+            <div class="stat">
+              <strong>8+</strong>
+              <div>Repos</div>
+            </div>
+            <div class="stat">
+              <strong>↓</strong>
+              <div>CV</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-title">Skills</div>
+        <h2></h2>
+        <div class="bento-grid">
+          <article class="bento-card bento-wide">
+            <div class="tag">Core</div>
+            <h3>Cloud Computing</h3>
+            <p>Deploying scalable architectures on AWS using EC2, S3, and Lambda.</p>
+          </article>
+          <article class="bento-card bento-tall">
+            <div class="tag">Future</div>
+            <h3>Gen AI</h3>
+            <p>Building apps with local LLMs (Ollama) and optimizing prompt chains.</p>
+            <div class="dot-row">
+              <span class="active"></span>
+              <span></span>
+              <span></span>
+            </div>
+          </article>
+          <article class="bento-card">
+            <div class="tag">Backend</div>
+            <h3>Java &amp; Spring</h3>
+            <p>Enterprise-grade backend logic, REST APIs, and microservices.</p>
+          </article>
+          <article class="bento-card bento-wide">
+            <div class="tag">Design</div>
+            <h3>Tailwind CSS</h3>
+            <p>Rapid UI development with utility-first styling and custom themes.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="split-grid">
+          <div class="panel">
+            <h3>Selected projects</h3>
+            <p>Hands-on with dual-server architectures and AI evaluation.</p>
+            <div class="project-item">
+              <span>01</span>
+              <div>
+                <h4>Amazon Clone</h4>
+                <p>Auth &amp; Test Suite · Modern UI</p>
+              </div>
+            </div>
+            <div class="project-item">
+              <span>02</span>
+              <div>
+                <h4>SkillSwap</h4>
+                <p>MERN Platform · Real-time Video/Chat</p>
+              </div>
+            </div>
+            <div class="project-item">
+              <span>03</span>
+              <div>
+                <h4>Research Muse AI</h4>
+                <p>Groq + Streamlit · Taxonomy Classification</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Favorite stack</h3>
+            <p>Tooling I reach for when building experiences with depth.</p>
+            <div class="stack-grid">
+              <div class="stack-pill">Java</div>
+              <div class="stack-pill">Spring Boot</div>
+              <div class="stack-pill">AWS</div>
+              <div class="stack-pill">React</div>
+              <div class="stack-pill">Ubuntu</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="contact-card">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Ready to ship your next idea?</h2>
+          <p>
+            Whether it's an internship opportunity or a collaboration on a Gen AI project,
+            I'm always ready to build.
+          </p>
+          <div class="contact-actions">
+            <button class="btn primary" data-action="email" data-href="mailto:hariachar577@gmail.com">Email me</button>
+            <button class="btn outline" data-action="linkedin" data-href="https://www.linkedin.com/in/hari-achar-778213333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</button>
+            <button class="btn outline" data-action="instagram" data-href="https://www.instagram.com/hari.achar__">Instagram</button>
+          </div>
+          <div class="contact-status" id="contactStatus">
+            Backend: <strong>connecting</strong>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <strong>Hari prasad V</strong> - Cloud, AI, and product engineering
+      </footer>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="orb one" aria-hidden="true"></div>
+    <div class="orb two" aria-hidden="true"></div>
+    <div class="orb three" aria-hidden="true"></div>
+    <script>
+      (function () {
+        const statusEl = document.getElementById("contactStatus");
+        const buttons = document.querySelectorAll("[data-action]");
+        let backendReady = false;
+
+        const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const SCRAMBLE_DURATION_MS = 3000;
+        const SCRAMBLE_INTERVAL_MS = 35;
+
+        function scrambleText(el) {
+          const original = el.getAttribute("data-text") || el.textContent;
+          if (!original) return;
+          const start = Date.now();
+          const timer = setInterval(() => {
+            const elapsed = Date.now() - start;
+            if (elapsed >= SCRAMBLE_DURATION_MS) {
+              clearInterval(timer);
+              el.textContent = original;
+              return;
+            }
+            const progress = elapsed / SCRAMBLE_DURATION_MS;
+            const revealCount = Math.floor(progress * original.length);
+            const scrambled = original
+              .split("")
+              .map((ch, idx) => {
+                if (idx < revealCount) return ch;
+                if (ch === " ") return " ";
+                return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+              })
+              .join("");
+            el.textContent = scrambled;
+          }, SCRAMBLE_INTERVAL_MS);
+        }
+
+        function setStatus(text, ok) {
+          if (!statusEl) return;
+          statusEl.innerHTML = "Backend: <strong>" + text + "</strong>";
+          statusEl.style.color = ok ? "var(--accent-3)" : "var(--muted)";
+        }
+
+        function sendEvent(action) {
+          return fetch("/api/click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action, ts: Date.now() })
+          });
+        }
+
+        function connectSSE() {
+          try {
+            const es = new EventSource("/events");
+            es.onopen = () => {
+              backendReady = true;
+              setStatus("online", true);
+            };
+            es.onerror = () => {
+              backendReady = false;
+              setStatus("offline (run server.js)", false);
+            };
+            es.onmessage = (ev) => {
+              try {
+                const data = JSON.parse(ev.data);
+                if (data && data.type === "ping") return;
+              } catch (e) {
+                // no-op
+              }
+            };
+          } catch (e) {
+            setStatus("offline (run server.js)", false);
+          }
+        }
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const href = btn.getAttribute("data-href");
+            const action = btn.getAttribute("data-action");
+            if (backendReady) {
+              sendEvent(action).catch(() => {});
+            }
+            if (href) {
+              window.open(href, "_blank", "noopener");
+            }
+          });
+        });
+
+        document.querySelectorAll(".scramble").forEach((el) => {
+          el.addEventListener("mouseenter", () => scrambleText(el));
+        });
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let ringX = 0;
+        let ringY = 0;
+
+        window.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        connectSSE();
+      })();
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
